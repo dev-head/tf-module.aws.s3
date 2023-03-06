@@ -1,0 +1,27 @@
+aws_profile         = ""
+aws_region          = ""
+bucket_namespace    = ""
+
+buckets = {
+  test_bucket_001    = {
+    enabled     = true
+    name        = "test-bucket-001"
+    description = "Bucket created to test normal configurations."
+    acl         = "private"
+    bucket_access   = {
+      block_public_acls   = true, block_public_policy = true,
+      ignore_public_acls  = true, restrict_public_buckets = true
+    }
+    force_destroy           = false
+    named_lifecycle_rules   = ["default"]
+    logging                 = []
+    encryption              = []
+    versioning              = [{ enabled = true, mfa_delete = false }]
+    tags                    = {Project = "test-bucket-001"}
+  }
+  
+  test_bucket_002    = {
+    name    = "test-bucket-002"
+    enabled = true
+  }
+}
